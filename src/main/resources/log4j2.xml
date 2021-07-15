@@ -13,7 +13,7 @@
                      filePattern="logs/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.log">
             <PatternLayout pattern="${pattern_console}"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="10 KB"/>
+                <SizeBasedTriggeringPolicy size="150 KB"/>
             </Policies>
             <DefaultRolloverStrategy max="3"/>
         </RollingFile>
