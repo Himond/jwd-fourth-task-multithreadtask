@@ -38,10 +38,10 @@ public class DispatchCenter {
         try{
             lock.lock();
             while (true){
-                if (getTunnel(train, firstTunnel, countRowFirstTunnel, countRowSecondTunnel)) {
+                if (checkTunnel(train, firstTunnel, countRowFirstTunnel, countRowSecondTunnel)) {
                     return firstTunnel;
                 }
-                if (getTunnel(train, secondTunnel, countRowSecondTunnel, countRowFirstTunnel)) {
+                if (checkTunnel(train, secondTunnel, countRowSecondTunnel, countRowFirstTunnel)) {
                     return secondTunnel;
                 }
             }
@@ -50,8 +50,8 @@ public class DispatchCenter {
         }
     }
 
-    private boolean getTunnel(Train train, Tunnel tunnel, AtomicInteger firstCounter, AtomicInteger secondCounter) {
-        if (checkTunnel(tunnel) && checkDirectionTunnel(tunnel, train)){
+    private boolean checkTunnel(Train train, Tunnel tunnel, AtomicInteger firstCounter, AtomicInteger secondCounter) {
+        if (checkTrainInTunnel(tunnel) && checkDirectionTunnel(tunnel, train)){
             if (firstCounter.get() < MAX_ROW_TRAIN_COUNT){
                 firstCounter.incrementAndGet();
                 secondCounter.set(0);
@@ -63,7 +63,7 @@ public class DispatchCenter {
     }
 
 
-    private boolean checkTunnel(Tunnel tunnel){
+    private boolean checkTrainInTunnel(Tunnel tunnel){
         if(tunnel.getCountTrain() == 0){
             tunnel.setDirection(Direction.UNUSED);
             return true;
