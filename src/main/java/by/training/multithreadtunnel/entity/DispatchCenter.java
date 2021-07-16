@@ -19,7 +19,6 @@ public class DispatchCenter {
     private Tunnel firstTunnel;
     private Tunnel secondTunnel;
 
-
     private final Lock lock = new ReentrantLock();
 
     private DispatchCenter() {
@@ -30,6 +29,7 @@ public class DispatchCenter {
     private static class SingletonHolder{
         static final DispatchCenter INSTANCE = new DispatchCenter();
     }
+
     public static DispatchCenter getInstance(){
         return SingletonHolder.INSTANCE;
     }
@@ -61,7 +61,6 @@ public class DispatchCenter {
         }
         return false;
     }
-
 
     private boolean checkTrainInTunnel(Tunnel tunnel){
         if(tunnel.getCountTrain() == 0){
