@@ -16,8 +16,8 @@ public class DispatchCenter {
     private final AtomicInteger countRowFirstTunnel = new AtomicInteger(0);
     private final AtomicInteger countRowSecondTunnel = new AtomicInteger(0);
 
-    private Tunnel firstTunnel;
-    private Tunnel secondTunnel;
+    private final Tunnel firstTunnel;
+    private final Tunnel secondTunnel;
 
     private final Lock lock = new ReentrantLock();
 

@@ -12,6 +12,7 @@ public class Train extends Thread implements Serializable {
     private final Direction direction;
 
     public Train(int trainNumber, Direction direction) {
+        super("Train №: " + trainNumber + ", Direction: " + direction);
         this.id = IdGenerator.generateId();
         this.trainNumber = trainNumber;
         this.direction = direction;
@@ -36,14 +37,9 @@ public class Train extends Thread implements Serializable {
     @Override
     public void run() {
         Tunnel tunnel;
-        Thread.currentThread().setName("Train №: " + trainNumber + ", ID = " + id);
         DispatchCenter dispatch = DispatchCenter.getInstance();
-        try {
-            tunnel = dispatch.directTrainToTunnel(this);
-            tunnel.process(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        tunnel = dispatch.directTrainToTunnel(this);
+        tunnel.process(this);
     }
 
     @Override

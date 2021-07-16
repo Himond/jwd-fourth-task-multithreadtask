@@ -64,7 +64,7 @@ public class Tunnel {
 
         /* the first train rides through the tunnel and in the same time another train can enter in tunnel
         if all the code is included in try catch and locked, another train won't be able to enter the tunnel until
-        the first one leaves the tunnel*/
+        the first one leaves the tunnel */
 
         try{
             TimeUnit.SECONDS.sleep(3);
