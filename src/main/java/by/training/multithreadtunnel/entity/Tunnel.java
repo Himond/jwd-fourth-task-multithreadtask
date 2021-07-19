@@ -35,7 +35,6 @@ public class Tunnel {
         }
     }
 
-
     public long getTunnelId() {
         return tunnelId;
     }
@@ -52,6 +51,12 @@ public class Tunnel {
         this.direction = direction;
     }
 
+    /* method process:
+       the first train rides through the tunnel and in the same time another train can enter in tunnel
+       if all the code is included in try catch and locked, another train won't be able to enter the tunnel until
+       the first one leaves the tunnel
+       */
+
     public void process(Train train){
 
         try {
@@ -61,10 +66,6 @@ public class Tunnel {
         } finally {
             lock.unlock();
         }
-
-        /* the first train rides through the tunnel and in the same time another train can enter in tunnel
-        if all the code is included in try catch and locked, another train won't be able to enter the tunnel until
-        the first one leaves the tunnel */
 
         try{
             TimeUnit.SECONDS.sleep(3);

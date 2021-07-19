@@ -2,10 +2,7 @@ package by.training.multithreadtunnel.entity;
 
 import by.training.multithreadtunnel.util.IdGenerator;
 
-import java.io.Serializable;
-
-
-public class Train extends Thread implements Serializable {
+public class Train extends Thread{
 
     private final long id;
     private int trainNumber;
@@ -38,7 +35,7 @@ public class Train extends Thread implements Serializable {
     public void run() {
         Tunnel tunnel;
         DispatchCenter dispatch = DispatchCenter.getInstance();
-        tunnel = dispatch.directTrainToTunnel(this);
+        tunnel = dispatch.assignTunnelToTrain(this);
         tunnel.process(this);
     }
 

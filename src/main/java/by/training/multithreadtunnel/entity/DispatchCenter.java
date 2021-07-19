@@ -34,7 +34,7 @@ public class DispatchCenter {
         return SingletonHolder.INSTANCE;
     }
 
-    public Tunnel directTrainToTunnel(Train train){
+    public Tunnel assignTunnelToTrain(Train train){
         try{
             lock.lock();
             while (true){

@@ -17,7 +17,6 @@ public class Main {
 
         ReaderService service = new ReaderServiceImpl();
         List<Train> trains = TrainParser.parseTrain(service.read("src\\main\\resources\\trains.txt"));
-
         ExecutorService executorService = Executors.newFixedThreadPool(trains.size());
         trains.forEach(executorService::execute);
         executorService.shutdown();
